@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import { ApiAiClient } from 'api-ai-javascript';  
 import { Observable } from 'rxjs/Observable';  
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';  
-import { Http } from '@angular/http';
+
 
 
 
@@ -19,7 +19,7 @@ export class ChatService {
   readonly _client = new ApiAiClient({ accessToken: this.token }); 
   conversation = new BehaviorSubject<Message[]>([]);  
 
-  constructor(public http: Http) { }
+  constructor() { }
 
 
 
@@ -40,8 +40,6 @@ export class ChatService {
       this.conversation.next([msg]);  
     }  
 
-    getSupplyOffers(): Observable<any> {
-      return this.http.get('http://hackathon-api-biagri.herokuapp.com/supply/offers').map(res => res.json());
-    }
+   
   
 }

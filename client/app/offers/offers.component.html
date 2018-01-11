@@ -1,0 +1,15 @@
+<!-- {{offers.offers}} -->
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let supplyOffer of supplyOffers">
+      <td>{{supplyOffer.id}}</td>
+      <td>{{supplyOffer.product.name}}</td>
+    </tr>
+  </tbody>
+</table>

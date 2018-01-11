@@ -13,10 +13,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
+import { OffersproComponent } from './offerspro/offerspro.component';
 
 const routes: Routes = [
   { path: '', component: AboutComponent },
   { path: 'cats', component: CatsComponent },
+  { path: 'offers', component: OffersproComponent },
   { path: 'students', component: StudentsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },

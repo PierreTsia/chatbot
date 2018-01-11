@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ChatService, Message } from '../services/chat.service';
 import { Observable } from 'rxjs/Observable';
+import { BiAgriService } from '../services/bi-agri.service';
 
 
 import 'rxjs/add/operator/scan';
@@ -15,28 +16,21 @@ import 'rxjs/add/operator/scan';
 export class ChatcomponentComponent implements OnInit {
   messages: Observable<Message[]>;
   strMsg: string;
-  public supplyOffers = []
-  constructor(private chat: ChatService) { }
+  public supplyOffers = [];
+  public offers = [];
+  constructor(private chat: ChatService, private biAgri : BiAgriService) { }
 
 
   ngOnInit() {
     this.messages = this.chat.conversation.asObservable()
       .scan((acc, val) => acc.concat(val));
-   this.getSupplyOffers();
+
   }
   sendMessage() {
     this.chat.talk(this.strMsg);
     this.strMsg = '';
   }
 
-  getSupplyOffers(){
-    this.chat.getSupplyOffers().subscribe(
-      data => {
-        this.supplyOffers = data,
-          console.log(this.supplyOffers)
-      },
-      error => console.log(error),
-    );
-  }
+ 
 
 }
