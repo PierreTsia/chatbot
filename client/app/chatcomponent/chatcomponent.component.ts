@@ -22,19 +22,17 @@ export class ChatcomponentComponent implements OnInit {
   ngOnInit() {
     this.messages = this.chat.conversation.asObservable()
       .scan((acc, val) => acc.concat(val));
-   this.getSupplyOffers();
+    this.getSupplyOffers();
   }
   sendMessage() {
     this.chat.talk(this.strMsg);
     this.strMsg = '';
   }
 
-  getSupplyOffers(){
-    this.chat.getSupplyOffers().subscribe(
-      data => {
-        this.supplyOffers = data,
-          console.log(this.supplyOffers)
-      },
+  getSupplyOffers() {
+    this.chat.getSupplyOffers().subscribe(data => {
+      this.supplyOffers = data, console.log(this.supplyOffers)
+    },
       error => console.log(error),
     );
   }
