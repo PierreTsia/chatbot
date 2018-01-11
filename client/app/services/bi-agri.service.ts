@@ -20,12 +20,12 @@ export class BiAgriService {
     return this.http.get('http://hackathon-api-biagri.herokuapp.com/collection/products').map(res => res.json());
   }
 
-  getSupplyProduct(id): Observable<any> {
-    return this.http.get(`http://hackathon-api-biagri.herokuapp.com/supply/products/${id}`).map(res => res.json());
+  getSupplyProduct(supplyProduct): Observable<any> {
+    return this.http.get(`http://hackathon-api-biagri.herokuapp.com/supply/products/${supplyProduct}`).map(res => res.json());
   }
 
-  getCollectionProduct(id): Observable<any> {
-    return this.http.get(`http://hackathon-api-biagri.herokuapp.com/collection/products/${id}`).map(res => res.json());
+  getCollectionProduct(collectionProduct): Observable<any> {
+    return this.http.get(`http://hackathon-api-biagri.herokuapp.com/collection/products/${collectionProduct}`).map(res => res.json());
   }
 
   

@@ -10,30 +10,58 @@ export class OffersComponent implements OnInit {
 
   constructor(public biAgri : BiAgriService) { }
 
+  public collectionProducts = [];
+  public collectionProduct;
+
+  public supplyProducts = [];
+  public supplyProduct;
+
   public offers = [];
+  public offer;
+
   public supplyOffers = [];
+  public supplyOffer;
+
   public packagings = [];
   public packaging;
-  public offer;
-  public supplyOffer;
+  
+  
  
 
   ngOnInit() {
     this.getOffers();
     this.getSupplyOffers();
     this.getPackagings();
-   
- 
-   
-   
+    this.getSupplyProducts();
+    this.getCollectionProducts();
+    
 
+  }
+
+  getCollectionProducts(){
+    this.biAgri.getCollectionProducts().subscribe(
+      data => {
+        this.collectionProducts = data.products,
+          console.log(this.collectionProducts)
+      },
+      error => console.log(error),
+    );
+  }
+  getSupplyProducts(){
+    this.biAgri.getSupplyProducts().subscribe(
+      data => {
+        this.supplyProducts = data.products,
+          console.log(this.supplyProducts)
+      },
+      error => console.log(error),
+    );
   }
 
   getOffers(){
     this.biAgri.getOffers().subscribe(
       data => {
         this.offers = data.offers,
-          console.log("Offers =>" +this.offers)
+          console.log(this.offers)
       },
       error => console.log(error),
     );
@@ -92,6 +120,27 @@ export class OffersComponent implements OnInit {
     );
   }
   
+  getSupplyProduct(id){
+    this.biAgri.getSupplyProduct(id).subscribe(
+      data => {
+        
+        this.supplyProduct = data;
+        console.log(this.supplyProduct)
+        
+      },
+      error => console.log(error),
+    );
+  }
 
-
+  getCollectionProduct(id){
+    this.biAgri.getCollectionProduct(id).subscribe(
+      data => {
+        
+        this.collectionProduct = data;
+        console.log(this.collectionProduct)
+        
+      },
+      error => console.log(error),
+    );
+  }
 }
