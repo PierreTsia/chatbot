@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';  
+import { Offer } from '../shared/models/offer.model';
 
 
 @Injectable()
@@ -41,12 +42,12 @@ export class BiAgriService {
     return this.http.get('http://hackathon-api-biagri.herokuapp.com/collection/offers').map(res => res.json());
   }
 
-  getSupplyOffer(id): Observable<any> {
-    return this.http.get(`http://hackathon-api-biagri.herokuapp.com/supply/offers/${id}`).map(res => res.json());
+  getSupplyOffer(supplyOffer): Observable<any> {
+    return this.http.get(`http://hackathon-api-biagri.herokuapp.com/supply/offers/${supplyOffer}`).map(res => res.json());
   }
 
-  getOffer(id): Observable<any> {
-    return this.http.get(`http://hackathon-api-biagri.herokuapp.com/collection/offers/${id}`).map(res => res.json());
+  getOffer(offer): Observable<any> {
+    return this.http.get(`http://hackathon-api-biagri.herokuapp.com/collection/offers/${offer}`).map(res => res.json());
   }
 
 
@@ -56,8 +57,8 @@ export class BiAgriService {
     return this.http.get('http://hackathon-api-biagri.herokuapp.com/supply/packagings').map(res => res.json());
   }
 
-  getPackaging(id): Observable<any> {
-    return this.http.get(`http://hackathon-api-biagri.herokuapp.com/supply/packagings/${id}`).map(res => res.json());
+  getPackaging(packaging): Observable<any> {
+    return this.http.get(`http://hackathon-api-biagri.herokuapp.com/supply/packagings/${packaging}`).map(res => res.json());
   }
 
   //CONTACT

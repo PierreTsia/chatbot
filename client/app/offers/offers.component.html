@@ -1,3 +1,39 @@
+<h1>Offers</h1>
 <ul>
-<li *ngFor="let offer of offers">id: {{offer.id}}  price : {{offer.price}}</li>
+  <li *ngFor="let offer of offers">id: {{offer.id}} price : {{offer.price}}
+    <button (click)="getOffer(offer.id)">get price</button>
+
+  </li>
 </ul>
+
+<div>
+  <p>Offer Price :{{offer.price}}</p>
+</div>
+
+<hr>
+
+<h1>Supply Offers</h1>
+<ul>
+  <li *ngFor="let supplyOffer of supplyOffers">id: {{supplyOffer.id}} price : {{supplyOffer.price}}
+    <button (click)="getSupplyOffer(supplyOffer.id)">get price</button>
+
+  </li>
+</ul>
+
+<div>
+  <p>SupplyOffer :{{supplyOffer.price}}</p>
+</div>
+
+<hr>
+
+<h1>Packagings</h1>
+<ul>
+  <li *ngFor="let packaging of packagings">id: {{packaging.id}} name : {{packaging.name}}
+    <button (click)="getPackaging(packaging.id)">get Unit Per Pack</button>
+
+  </li>
+</ul>
+
+<div>
+  <p>Packagings UnitPerPack :{{packaging.unitPerPackaging}}</p>
+</div>
