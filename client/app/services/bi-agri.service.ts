@@ -52,11 +52,11 @@ export class BiAgriService {
 
   //PACKAGING
 
-  getPackagagings(): Observable<any> {
+  getPackagings(): Observable<any> {
     return this.http.get('http://hackathon-api-biagri.herokuapp.com/supply/packagings').map(res => res.json());
   }
 
-  getPackagaging(id): Observable<any> {
+  getPackaging(id): Observable<any> {
     return this.http.get(`http://hackathon-api-biagri.herokuapp.com/supply/packagings/${id}`).map(res => res.json());
   }
 

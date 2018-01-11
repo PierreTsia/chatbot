@@ -12,9 +12,13 @@ export class OffersComponent implements OnInit {
 
   public offers = [];
   public supplyOffers = [];
+  public packagings = [];
 
   ngOnInit() {
-    this.getOffers()
+    this.getOffers();
+    this.getSupplyOffers();
+    this.getPackagings();
+
   }
 
   getOffers(){
@@ -27,5 +31,24 @@ export class OffersComponent implements OnInit {
     );
   }
 
+  getSupplyOffers(){
+    this.biAgri.getSupplyOffers().subscribe(
+      data => {
+        this.supplyOffers = data.supplyOffers,
+          console.log(this.supplyOffers)
+      },
+      error => console.log(error),
+    );
+  }
+
+  getPackagings(){
+    this.biAgri.getPackagings().subscribe(
+      data => {
+        this.packagings = data.packaging,
+          console.log(this.packagings)
+      },
+      error => console.log(error),
+    );
+  }
 
 }
