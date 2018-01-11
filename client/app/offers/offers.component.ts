@@ -13,6 +13,7 @@ export class OffersComponent implements OnInit {
   public offers = [];
   public supplyOffers = [];
   public packagings = [];
+  public packaging;
   public offer;
   public supplyOffer;
  
@@ -21,7 +22,7 @@ export class OffersComponent implements OnInit {
     this.getOffers();
     this.getSupplyOffers();
     this.getPackagings();
-    this.getSupplyOffer(2)
+   
  
    
    
@@ -58,6 +59,16 @@ export class OffersComponent implements OnInit {
     );
   }
 
+  getPackaging(id){
+    this.biAgri.getPackaging(id).subscribe(
+      data => {
+        this.packaging = data,
+          console.log(this.packaging)
+      },
+      error => console.log(error),
+    );
+  }
+
   getOffer(id){
     this.biAgri.getOffer(id).subscribe(
       data => {
@@ -80,6 +91,7 @@ export class OffersComponent implements OnInit {
       error => console.log(error),
     );
   }
+  
 
 
 }

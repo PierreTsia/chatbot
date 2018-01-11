@@ -23,3 +23,17 @@
 <div>
   <p>SupplyOffer :{{supplyOffer.price}}</p>
 </div>
+
+<hr>
+
+<h1>Packagings</h1>
+<ul>
+  <li *ngFor="let packaging of packagings">id: {{packaging.id}} name : {{packaging.name}}
+    <button (click)="getPackaging(packaging.id)">get Unit Per Pack</button>
+
+  </li>
+</ul>
+
+<div>
+  <p>Packagings UnitPerPack :{{packaging.unitPerPackaging}}</p>
+</div>
