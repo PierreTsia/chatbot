@@ -6,7 +6,7 @@
   </li>
 </ul>
 
-<div>
+<div *ngIf="(collectionProduct)">
   <p>Collection Product Description :{{collectionProduct.description}}</p>
 </div>
 
@@ -21,7 +21,7 @@
   </li>
 </ul>
 
-<div>
+<div *ngIf="(supplyProduct)">
   <p>Supply Product Description :{{supplyProduct.description}}</p>
 </div>
 
@@ -36,7 +36,7 @@
   </li>
 </ul>
 
-<div>
+<div *ngIf="(offer)">
   <p>Offer Price :{{offer.price}}</p>
 </div>
 
@@ -50,7 +50,7 @@
   </li>
 </ul>
 
-<div>
+<div *ngIf="(supplyOffer)">
   <p>SupplyOffer :{{supplyOffer.price}}</p>
 </div>
 
@@ -64,6 +64,6 @@
   </li>
 </ul>
 
-<div>
+<div *ngIf="(packaging)">
   <p>Packagings UnitPerPack :{{packaging.unitPerPackaging}}</p>
 </div>
