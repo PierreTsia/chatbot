@@ -20,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { StudentsComponent } from './students/students.component';
 import { ChatcomponentComponent } from './chatcomponent/chatcomponent.component';
 import { ChatService } from './services/chat.service';
+import { BiAgriService} from './services/bi-agri.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ChatService } from './services/chat.service';
     CatService,
     UserService,
     StudentService,
-    ChatService
+    ChatService,
+    BiAgriService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
