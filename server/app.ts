@@ -4,6 +4,7 @@ import * as express from 'express';
 import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
+import * as axios from 'axios';
 
 import setRoutes from './routes';
 
@@ -13,7 +14,20 @@ app.set('port', (process.env.PORT || 3000));
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+//AJOUT
+app.post('/toto', async (req, res) => {
+  const speech = `Le
+  ${req.body.result.resolvedQuery} est : toto`;
+ /*  axios.get() */
+  return res.json({
+    speech: speech,
+    displayText: speech,
+    source: 'webhook-sample'
+  });
+});
 
 let mongodbURI;
 if (process.env.NODE_ENV === 'test') {
@@ -32,7 +46,7 @@ mongodb
 
     setRoutes(app);
 
-    app.get('/*', function(req, res) {
+    app.get('/*', function (req, res) {
       res.sendFile(path.join(__dirname, '../public/index.html'));
     });
 
@@ -45,6 +59,6 @@ mongodb
   })
   .catch((err) => {
     console.error(err);
-});
+  });
 
 export { app };
