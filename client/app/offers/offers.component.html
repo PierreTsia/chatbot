@@ -1,3 +1,33 @@
+<h1>Collection Products</h1>
+<ul>
+  <li *ngFor="let collectionProduct of collectionProducts">id: {{collectionProduct.id}} name : {{collectionProduct.name}}
+    <button (click)="getCollectionProduct(collectionProduct.id)">get description</button>
+
+  </li>
+</ul>
+
+<div *ngIf="(collectionProduct)">
+  <p>Collection Product Description :{{collectionProduct.description}}</p>
+</div>
+
+<hr>
+
+
+<h1>Supply Products</h1>
+<ul>
+  <li *ngFor="let supplyProduct of supplyProducts">id: {{supplyProduct.id}} name : {{supplyProduct.name}}
+    <button (click)="getSupplyProduct(supplyProduct.id)">get description</button>
+
+  </li>
+</ul>
+
+<div *ngIf="(supplyProduct)">
+  <p>Supply Product Description :{{supplyProduct.description}}</p>
+</div>
+
+<hr>
+
+
 <h1>Offers</h1>
 <ul>
   <li *ngFor="let offer of offers">id: {{offer.id}} price : {{offer.price}}
@@ -6,7 +36,7 @@
   </li>
 </ul>
 
-<div>
+<div *ngIf="(offer)">
   <p>Offer Price :{{offer.price}}</p>
 </div>
 
@@ -20,7 +50,7 @@
   </li>
 </ul>
 
-<div>
+<div *ngIf="(supplyOffer)">
   <p>SupplyOffer :{{supplyOffer.price}}</p>
 </div>
 
@@ -34,6 +64,6 @@
   </li>
 </ul>
 
-<div>
+<div *ngIf="(packaging)">
   <p>Packagings UnitPerPack :{{packaging.unitPerPackaging}}</p>
 </div>
