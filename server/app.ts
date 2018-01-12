@@ -33,7 +33,7 @@ app.post('/ble', async (req, res) => {
     }
     console.log(this.itemID)
     axios.get('http://hackathon-api-biagri.herokuapp.com/collection/products/' + this.itemID).then(toto => {
-      const speech = `Le ${req.body.result.resolvedQuery} est : ${toto.data.description}`;
+      const speech = `Le ${req.body.result.resolvedQuery} est : ${toto.data.price}`;
       res.json({
         speech: speech,
         displayText: speech,
