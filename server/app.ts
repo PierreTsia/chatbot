@@ -4,7 +4,7 @@ import * as express from 'express';
 import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
-import * as axios from 'axios';
+import axios from 'axios';
 
 import setRoutes from './routes';
 
@@ -16,18 +16,34 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//AXIOS
 
-//AJOUT
-app.post('/toto', async (req, res) => {
-  const speech = `Le
-  ${req.body.result.resolvedQuery} est : toto`;
- /*  axios.get() */
-  return res.json({
-    speech: speech,
-    displayText: speech,
-    source: 'webhook-sample'
-  });
-});
+
+
+app.post('/ble', async (req, res) => {
+
+  axios.get('http://hackathon-api-biagri.herokuapp.com/collection/products').then(result => {
+    let itemID;
+    
+    console.log(req.body.result.resolvedQuery)
+    for (let item of result.data.products) {
+      if (req.body.result.resolvedQuery == item.name || req.body.result.resolvedQuery == item.abbreviation) {
+        this.itemID = item.id;
+      }
+    }
+    console.log(this.itemID)
+    axios.get('http://hackathon-api-biagri.herokuapp.com/collection/products/' + this.itemID).then(toto => {
+      const speech = `Le ${req.body.result.resolvedQuery} est : ${toto.data.description}`;
+      res.json({
+        speech: speech,
+        displayText: speech,
+        source: 'webhook-sample'
+      });
+    })
+
+  })
+})
+
 
 let mongodbURI;
 if (process.env.NODE_ENV === 'test') {
